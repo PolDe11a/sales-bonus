@@ -1,3 +1,5 @@
+https://github.com/PolDe11a/sales-bonus.git
+
 # Проектная работа "Пряники"
 5 спринт, модуль JS
 
