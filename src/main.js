@@ -41,19 +41,17 @@ function calculateBonusByProfit(index, total, seller) {
 
 function analyzeSalesData(data, options) {
   // @TODO: Проверка входных данных
-  if (
-    !data ||
-    !Array.isArray(data.sellers) ||
-    !Array.isArray(data.products) ||
-    !Array.isArray(
-      data.purchase_records ||
-        data.sellers.length === 0 ||
-        data.products.length === 0 ||
-        data.purchase_records.length === 0,
-    )
-  ) {
-    throw new Error("Некорректные входные данные");
-  }
+if (
+  !data ||
+  !Array.isArray(data.sellers) ||
+  !Array.isArray(data.products) ||
+  !Array.isArray(data.purchase_records) ||
+  data.sellers.length === 0 ||
+  data.products.length === 0 ||
+  data.purchase_records.length === 0
+) {
+  throw new Error("Некорректные входные данные");
+}
 
   // @TODO: Проверка наличия опций
   if (!options || typeof options !== "object") {
@@ -141,13 +139,13 @@ function analyzeSalesData(data, options) {
   });
 
   // @TODO: Подготовка итоговой коллекции с нужными полями
-  return sellerStats.map(seller => ({
-        seller_id: seller.id,
-        name: seller.name,
-        revenue: +seller.revenue.toFixed(2),
-        profit: +seller.profit.toFixed(2),
-        sales_count: seller.sales_count,
-        top_products: seller.top_products,
-        bonus: +seller.bonus.toFixed(2)
-    }));
+  return sellerStats.map((seller) => ({
+    seller_id: seller.id,
+    name: seller.name,
+    revenue: +seller.revenue.toFixed(2),
+    profit: +seller.profit.toFixed(2),
+    sales_count: seller.sales_count,
+    top_products: seller.top_products,
+    bonus: +seller.bonus.toFixed(2),
+  }));
 }
